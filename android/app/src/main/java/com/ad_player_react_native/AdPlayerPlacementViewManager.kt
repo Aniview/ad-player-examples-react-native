@@ -18,16 +18,17 @@ object AdPlayerPlacementViewManager : SimpleViewManager<AdPlayerPlacementView>()
 
     // FIXME https://github.com/facebook/react-native/issues/17968
     private class DynamicAdPlayerPlacementView(context: Context) : AdPlayerPlacementView(context) {
-        private val measureAndLayout = Runnable {
-            val widthMS = MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY)
-            val heightMS = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY)
-            measure(widthMS, heightMS)
+        private val layoutRunnable = Runnable {
+            measure(
+                MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY),
+                MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY),
+            )
             layout(left, top, right, bottom)
         }
 
         override fun requestLayout() {
             super.requestLayout()
-            post(measureAndLayout)
+            post(layoutRunnable)
         }
     }
 }

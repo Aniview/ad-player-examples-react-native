@@ -7,7 +7,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>React Native AdPlayer example:</Text>
-      <AdPlayerPlacementView style={styles.placement}/>
+      <View style={styles.placementParent}>
+        <AdPlayerPlacementView style={styles.placement} />
+      </View>
     </View>
   );
 }
@@ -22,8 +24,15 @@ const styles = StyleSheet.create({
   text: {
     color: '#fff',
   },
+  placementParent: {
+    width: "auto",
+    alignSelf: 'baseline',
+    margin: 32,
+    padding: 4,
+    backgroundColor: "red",
+  },
   placement: {
     width: "100%",
-    flex: 1,
+    aspectRatio: 16 / 9,
   },
 });
