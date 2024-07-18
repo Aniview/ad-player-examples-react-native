@@ -17,6 +17,17 @@ av_pub_id={published id goes here}
 av_tag_id={tag id goes here}
 ```
 
+### iOS
+
+Update ios/Constants.swift with your data
+```
+enum Constants {
+    static let publisherId = ...
+    static let tagId = ...
+    static let storeURL = ...
+}
+```
+
 After this project can simply be run as any other React Native project.
 
 ## Step 2: Start the Metro Server
@@ -50,12 +61,23 @@ yarn android
 ### For iOS
 
 ```bash
+cd ios
+pod install
+# make sure 'pod install' succeeded
+
+# using XCode:
+# open and run: "ad_player_react_native.xcworkspace"
+
 # using npm
 npm run ios
 
 # OR using Yarn
 yarn ios
+
+# OR using XCode
+yarn ios
 ```
+
 
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
